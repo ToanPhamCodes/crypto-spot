@@ -1,6 +1,5 @@
-# Software Engineeting - Crypto Spot
+# Software Engineering - Crypto Spot
 
-Foobar is a Python library for dealing with word pluralization.
 
 ## Installation
 
