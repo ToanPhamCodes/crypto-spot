@@ -1,4 +1,5 @@
 import React from 'react'
+import Contact from '../../components/Contact'
 import Navbar from '../../components/NavBar'
 import './Home.css'
 const Home = () => {
@@ -19,6 +20,8 @@ const Home = () => {
 
         <div className="ellipses ellipses__outer--thick"></div>
       </div>
+
+      <Contact></Contact>
 
       
     </div>
