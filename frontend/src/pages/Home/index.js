@@ -2,23 +2,28 @@ import React from 'react'
 import Contact from '../../components/Contact'
 import Navbar from '../../components/NavBar'
 import './Home.css'
+import TypeWriter from 'typewriter-effect';
+
 const Home = () => {
   return (
     <div>
 
+
       <Navbar />
-      
-      <div className="ellipses-container">
+      <div className="container">
 
-        <h2 className="greeting">CryptoSpot</h2>
+        <div className="ellipses-container">
 
-        <div className="ellipses ellipses__outer--thin">
+          <h2 className="greeting"><TypeWriter options = {{strings: "CryptoSpot", autoStart:true, delay: 300, loop:true, restart:true, cursor:""}}/></h2>
 
-          <div className="ellipses ellipses__orbit"></div>
+          <div className="ellipses ellipses__outer--thin">
 
+            <div className="ellipses ellipses__orbit"></div>
+
+          </div>
+
+          <div className="ellipses ellipses__outer--thick"></div>
         </div>
-
-        <div className="ellipses ellipses__outer--thick"></div>
       </div>
 
       <Contact></Contact>
