@@ -29,3 +29,12 @@ ul {
 li {
   margin-right: 1rem;
 }
+li a {
+  text-decoration: none;
+  
+}
+
+li a:visited {
+  text-decoration: none;
+  color: black;
+}

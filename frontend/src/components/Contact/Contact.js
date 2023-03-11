@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import React from 'react'
 import './Contact.css'
-import Map from './Map';
+import Map from '../Map'
 
 const Contact = () => {
 
@@ -27,7 +27,7 @@ const Contact = () => {
     };
 
     return (
-        <section>
+        <section id = "Contact">
             <div className="container">
                 <div className="left">
                     <form onSubmit={handleSubmit}>

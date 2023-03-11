@@ -47,6 +47,7 @@ button:hover {
     display:flex;
     align-items: center;
     justify-content: center;
+    margin-left: 10px;
 }
 h2 {
     font-weight: 200;
