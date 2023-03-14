@@ -5,6 +5,7 @@ import { Route } from '../node_modules/react-router-dom/dist/index';
 import Navbar from './components/NavBar/NavBar';
 import Contact from './components/Contact/Contact';
 import Home from './pages/Home/index';
+import SignIn from './pages/SignIn/SignIn';
 function App() {
   const apiUrl = process.env.REACT_APP_API_URL;
 
@@ -22,6 +23,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Contact" element={<Contact />} />
+          <Route path = "/SignIn" element = {<SignIn/>}></Route>
         </Routes>
 
       </Router>

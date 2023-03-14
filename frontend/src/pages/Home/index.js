@@ -25,7 +25,7 @@ const Home = () => {
         </div>
       </div>
 
-      <Contact className ="Contact" ref = {contactRef} id = "Contact"/>
+      <Contact className ="Contact" ref = {contactRef} />
 
       
     </div>
