@@ -53,12 +53,12 @@ h2 {
     font-weight: 200;
 }
 
+
+.right {
+    flex:1;
+}
 form {
     width: 500px;
     display: flex;
     flex-direction: column;
-}
-
-.right {
-    flex:1;
 }
