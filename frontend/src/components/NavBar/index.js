@@ -1,7 +1,7 @@
 import React from 'react';
 import { ReactComponent as Logo } from '../../assets/logo.svg';
 
-import './NavBar.css'
+import './style.css'
 import { useRef } from "react";
 import {Link} from 'react-router-dom';
 import {HashLink} from 'react-router-hash-link';

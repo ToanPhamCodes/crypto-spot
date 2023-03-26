@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import React from 'react'
-import './Contact.css'
+import './style.css'
 import Map from '../Map'
 
 const Contact = () => {

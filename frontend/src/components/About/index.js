@@ -1,6 +1,6 @@
 import React from 'react'
 import phoneImage from '../../assets/crypto_phone.png';
-import AboutStyle from './About.css';
+import AboutStyle from './style.css';
 const About = () => {
   return (
     <section>

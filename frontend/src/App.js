@@ -2,10 +2,10 @@ import axios from 'axios';
 import React from 'react';
 import { BrowserRouter as Router, Routes } from 'react-router-dom';
 import { Route } from '../node_modules/react-router-dom/dist/index';
-import Navbar from './components/NavBar/NavBar';
-import Contact from './components/Contact/Contact';
-import Home from './pages/Home/index';
-import SignIn from './pages/SignIn/SignIn';
+import Navbar from './components/NavBar';
+import Contact from './components/Contact';
+import Home from './pages/Home';
+import SignIn from './pages/SignIn';
 function App() {
   const apiUrl = process.env.REACT_APP_API_URL;
 
