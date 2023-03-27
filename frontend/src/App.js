@@ -6,6 +6,7 @@ import Navbar from './components/NavBar';
 import Contact from './components/Contact';
 import Home from './pages/Home';
 import SignIn from './pages/SignIn';
+import DashBoard from './pages/DashBoard';
 function App() {
   const apiUrl = process.env.REACT_APP_API_URL;
 
@@ -24,6 +25,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/Contact" element={<Contact />} />
           <Route path = "/SignIn" element = {<SignIn/>}></Route>
+          <Route path = "/Dashboard" element = {<DashBoard/>}></Route>
         </Routes>
 
       </Router>
