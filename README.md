@@ -13,8 +13,16 @@ Go to backend and run these commands
 
 ```
 cd backend
+python3 -m venv env
+source . env/bin/activate
 pip install -r requirement.txt
 uvicorn main:app --reload
+```
+
+To disable env please type
+
+```
+deactivate
 ```
 
 open another terminal window and cd into frontend and run
