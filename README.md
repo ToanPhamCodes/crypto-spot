@@ -9,14 +9,17 @@ git clone
 ```
 
 ## Usage
-Go to backend folder and run
+Go to backend and run these commands
 
 ```
-npm init
+cd backend
+pip install -r requirement.txt
+uvicorn main:app --reload
 ```
 
 open another terminal window and cd into frontend and run
 ```
+cd frontend
 npm start
 ```
 
