@@ -2,9 +2,5 @@
   "name": "api_test",
   "lockfileVersion": 3,
   "requires": true,
-  "packages": {
-    "": {
-      "name": "api_test"
-    }
-  }
+  "packages": {}
 }
