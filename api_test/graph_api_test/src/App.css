@@ -1,0 +1,18 @@
+.App {
+  width: 50%;
+  height: auto;
+  margin-left: 25%;
+}
+
+
+.App-header {
+  background-color: #ffffff;
+  font-size: 10px;
+  width: 50%;
+  height: 100%;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
