@@ -1,6 +1,6 @@
 from fastapi import FastAPI, HTTPException, Depends
 from fastapi.security import HTTPBasic, HTTPBasicCredentials
-from pydantic import BaseModel
+from models import SignInData, SignUpData
 from fastapi.middleware.cors import CORSMiddleware
 from Auth import sign_up, sign_in
 from User import User
@@ -14,16 +14,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-class SignUpData(BaseModel):
-    email: str
-    password: str
-    first_name: str
-    last_name: str
-
-class SignInData(BaseModel):
-    email: str
-    password: str
 
 # @app.post("/signup")
 # async def handle_sign_up(credentials: HTTPBasicCredentials = Depends(security)):

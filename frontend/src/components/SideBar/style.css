@@ -1,0 +1,34 @@
+.sidebar {
+    width: 100%;
+    height: 95%;
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: black solid 1px;
+    margin-right:20px;
+
+
+  }
+  
+  .sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+  }
+  
+  .sidebar li {
+    padding: 10px 0;
+    cursor: pointer;
+    font-size: 1.1rem;
+
+  }
+  
+  .sidebar li:hover {
+    color: #007bff;
+  }
+  

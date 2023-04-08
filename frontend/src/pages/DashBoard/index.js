@@ -1,9 +1,37 @@
-import React from 'react'
+import React, { useState } from 'react';
+import Sidebar from 'components/SideBar';
+import './style.css';
 
-const DashBoard = () => {
+const Dashboard = () => {
+  const [selectedItem, setSelectedItem] = useState('home');
+
+  const handleSelection = (item) => {
+    setSelectedItem(item);
+  };
+
+  const renderComponent = () => {
+    switch (selectedItem) {
+      case 'home':
+        return <div>Home Component</div>;
+      case 'trade':
+        return <div>Trade Component</div>;
+      case 'portfolio':
+        return <div>Portfolio Component</div>;
+      case 'support':
+        return <div>Support Component</div>;
+      default:
+        return null;
+    }
+  };
+
   return (
-    <div>DashBoard</div>
-  )
-}
+    <div className="dashboard">
+      <div className="left">
+        <Sidebar onSelection={handleSelection} />
+      </div>
+      <div className="middle">{renderComponent()}</div>
+    </div>
+  );
+};
 
-export default DashBoard
+export default Dashboard;

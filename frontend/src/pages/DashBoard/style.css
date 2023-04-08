@@ -1,0 +1,17 @@
+/* 3 collumn layout */
+.dashboard {
+  display: flex;
+  height: 100vh;
+}
+
+.left {
+  flex: 0.7;
+  border-radius: 0.1%;
+
+}
+
+.middle {
+  flex: 4;
+  padding: 20px;
+  background-color: blue;
+}
