@@ -1,7 +1,7 @@
 import pymongo
 
 # Set up MongoDB connection
-client = pymongo.MongoClient("mongodb+srv://<username>:<password>@<cluster>.mongodb.net/test?retryWrites=true&w=majority")
+client = pymongo.MongoClient("mongodb+srv://phamtony1911:123@databasetest.090hg24.mongodb.net/?retryWrites=true&w=majority&tlsAllowInvalidCertificates=true")
 db = client.test
 
 # Ping the cluster

@@ -37,16 +37,17 @@ const SignIn = () => {
     if (isSignUp) {
       // Call your sign up function from the backend
       const response = await signUp(email, password, firstName, lastName);
-      if (response.success) {
+      if (response.user_id) {
         // Navigate to the dashboard
         navigate('/dashboard');
       } else {
         // Handle sign up error
+        window.alert("Failed to sign up. Please try again.");
       }
     } else {
       // Call your sign in function from the backend
       const response = await signIn(email, password);
-      if (response.success) {
+      if (response.user_id) {
         // Navigate to the dashboard
         navigate('/dashboard');
       } else {
