@@ -1,34 +1,49 @@
 .sidebar {
-    width: 100%;
-    height: 95%;
-    background-color: red;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border: black solid 1px;
-    margin-right:20px;
+  width: 100%;
+  height: 90%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.logo-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
 
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
 
-  }
-  
-  .sidebar ul {
-    list-style-type: none;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 10px;
-    align-items: center;
-  }
-  
-  .sidebar li {
-    padding: 10px 0;
-    cursor: pointer;
-    font-size: 1.1rem;
+.sidebar li {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  cursor: pointer;
+  margin: 20px;
+  width: 100%;
+}
 
-  }
-  
-  .sidebar li:hover {
-    color: #007bff;
-  }
-  
+.sidebar li .icon {
+  display: inline-block;
+  width: 50px;
+  text-align: center;
+}
+
+.sidebar li .item-name {
+  display: inline-block;
+}
+
+.sidebar li:hover,
+.sidebar li.selected {
+  color: #007bff;
+
+}
+
+.signout {
+  margin-top: auto;
+}

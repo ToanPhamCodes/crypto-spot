@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Sidebar from 'components/SideBar';
+import TickerSearch from 'components/TickerSearch';
 import './style.css';
 
 const Dashboard = () => {
@@ -12,7 +13,7 @@ const Dashboard = () => {
   const renderComponent = () => {
     switch (selectedItem) {
       case 'home':
-        return <div>Home Component</div>;
+        return <div><TickerSearch/></div>;
       case 'trade':
         return <div>Trade Component</div>;
       case 'portfolio':

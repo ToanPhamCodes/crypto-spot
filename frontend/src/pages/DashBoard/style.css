@@ -13,5 +13,11 @@
 .middle {
   flex: 4;
   padding: 20px;
-  background-color: blue;
+  align-items: center;
+  overflow: auto;
+
+}
+.middle > * {
+  width: 100%;
+  height: 100%;
 }
