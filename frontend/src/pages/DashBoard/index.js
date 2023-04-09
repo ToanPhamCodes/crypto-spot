@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Sidebar from 'components/SideBar';
 import TickerSearch from 'components/TickerSearch';
+import Contact from 'components/Contact';
 import './style.css';
 
 const Dashboard = () => {
@@ -19,7 +20,7 @@ const Dashboard = () => {
       case 'portfolio':
         return <div>Portfolio Component</div>;
       case 'support':
-        return <div>Support Component</div>;
+        return <div><Contact></Contact></div>;
       default:
         return null;
     }

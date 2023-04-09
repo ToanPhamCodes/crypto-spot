@@ -1,8 +1,7 @@
 import axios from 'axios';
 import React from 'react';
-import { BrowserRouter as Router, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Outlet } from 'react-router-dom';
 import { Route } from '../node_modules/react-router-dom/dist/index';
-import { useLocation } from 'react-router-dom';
 import Navbar from './components/NavBar';
 import Contact from './components/Contact';
 import Home from './pages/Home';
@@ -27,16 +26,11 @@ import DashBoard from './pages/DashBoard';
 //   );
 // }
 
-
 const MainRoutes = () => {
   return (
     <>
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/Contact" element={<Contact />} />
-        <Route path="/SignIn" element={<SignIn />} />
-      </Routes>
+      <Outlet />
     </>
   );
 };
@@ -45,11 +39,39 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<MainRoutes />} />
+        <Route path="/" element={<MainRoutes />}>
+          <Route index element={<Home />} />
+          <Route path="/Contact" element={<Contact />} />
+          <Route path="/SignIn" element={<SignIn />} />
+        </Route>
         <Route path="/Dashboard" element={<DashBoard />} />
       </Routes>
     </Router>
   );
 }
+
+// const MainRoutes = () => {
+//   return (
+//     <>
+//       <Navbar />
+//       <Routes>
+//         <Route path="/" element={<Home />} />
+//         <Route path="/Contact" element={<Contact />} />
+//         <Route path="/SignIn" element={<SignIn />} />
+//       </Routes>
+//     </>
+//   );
+// };
+
+// function App() {
+//   return (
+//     <Router>
+//       <Routes>
+//         <Route path="/" element={<MainRoutes />} />
+//         <Route path="/Dashboard" element={<DashBoard />} />
+//       </Routes>
+//     </Router>
+//   );
+// }
 
 export default App;

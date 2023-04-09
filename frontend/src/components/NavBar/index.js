@@ -16,18 +16,6 @@ function Navbar() {
 
           <div className="menu">
             <ul>
-              {/* <li><a href = "/">Home</a></li>
-              <li>About</li>
-              <li onclick = {() => scrollToContact(contactRef)}>
-                Contact
-              </li> */}
-              {/* <li><Link to = {"/"}>Home</Link ></li>
-              <li>About</li>
-              <li onClick={() => scrollToContact(contactRef)}><a href="#Contact" >Contact</a ></li>
-              <li>Sign in</li> */}
-              {/* <li><Link to={"/Contact"} smooth>Contact</Link ></li> */}
-
-
               <li>
                 <Link to = "/">Home</Link>
               </li>
