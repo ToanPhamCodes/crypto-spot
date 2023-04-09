@@ -1,12 +1,36 @@
 import React from 'react';
 import { ReactComponent as Logo } from 'assets/logo.svg';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import { FaHome, FaChartLine, FaBriefcase, FaHeadset, FaSignOutAlt } from 'react-icons/fa';
 import './style.css';
 
 const Sidebar = ({ onSelection }) => {
   const handleItemClick = (item) => {
     onSelection(item);
+  };
+
+  const navigate = useNavigate();
+
+  const signOut = async () => {
+    try {
+      const response = await fetch("http://127.0.0.1:8000/logout", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include", // This is required to send cookies
+      });
+
+      if (response.ok) {
+        // Successfully logged out
+        navigate('/');
+      } else {
+        // Handle logout error
+        window.alert("Failed to log out. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error logging out:", error);
+    }
   };
 
   return (
@@ -22,7 +46,7 @@ const Sidebar = ({ onSelection }) => {
         <li onClick={() => handleItemClick('support')}><div className="icon" ><FaHeadset /></div><div className="item-name">Support</div></li>
       </ul>
       <ul className="signout">
-        <li onClick={() => handleItemClick('signout')}><div className="icon" ><FaSignOutAlt /></div><div className="item-name">Sign Out</div></li>
+        <li onClick={signOut}><div className="icon" ><FaSignOutAlt /></div><div className="item-name">Sign Out</div></li>
       </ul>
     </div>
   );

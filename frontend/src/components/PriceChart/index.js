@@ -59,7 +59,7 @@ const PriceChart = ({ ticker, days }) => {
           <VictoryLine
             data={transformData(tokenPrices)}
             interpolation="basis"
-            style={{ data: { strokeWidth: 0.5 } }}
+            style={{ data: { strokeWidth: 1.5 } }}
             labels={({ datum }) => `Price: ${datum.y.toFixed(2)}`}
             labelComponent={
               <VictoryTooltip

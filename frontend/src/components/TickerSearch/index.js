@@ -13,14 +13,14 @@ const TickerSearch = () => {
 
   return (
     <div className='App'>
-      {/* <input
+      <input
         type="text"
         placeholder="Enter a ticker symbol (e.g. bitcoin)"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
 
-      <button onClick={handleSearch}>Search</button> */}
+      <button onClick={handleSearch}>Search</button>
 
       <div className='GraphComponent'> 
         <div className='GraphChart'>
