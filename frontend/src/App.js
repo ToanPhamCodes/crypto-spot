@@ -50,28 +50,4 @@ function App() {
   );
 }
 
-// const MainRoutes = () => {
-//   return (
-//     <>
-//       <Navbar />
-//       <Routes>
-//         <Route path="/" element={<Home />} />
-//         <Route path="/Contact" element={<Contact />} />
-//         <Route path="/SignIn" element={<SignIn />} />
-//       </Routes>
-//     </>
-//   );
-// };
-
-// function App() {
-//   return (
-//     <Router>
-//       <Routes>
-//         <Route path="/" element={<MainRoutes />} />
-//         <Route path="/Dashboard" element={<DashBoard />} />
-//       </Routes>
-//     </Router>
-//   );
-// }
-
 export default App;

@@ -16,6 +16,37 @@ const TickerSearch = () => {
   const [showBuyPopup, setShowBuyPopup] = useState(false);
   const [showSellPopup, setShowSellPopup] = useState(false);
 
+
+  //calculate the value the user are going to buy/sell
+  const [amount, setAmount] = useState(0);
+  const [totalValue, setTotalValue] = useState(0);
+
+  const handleAmountChange = (e) => {
+    setAmount(Number(e.target.value));
+    const newAmount = Number(e.target.value);
+    setAmount(newAmount);
+    const newValue = calculateTotalValue(newAmount, tokenData);
+    setTotalValue(newValue);
+  };
+
+  const calculateTotalValue = (amount, tokenData) => {
+    if (tokenData) {
+      return amount * tokenData.market_data.current_price.gbp;
+    }
+    return 0;
+  };
+
+  const handleBuySubmit = (e) => {
+    // e.preventDefault();
+    // TODO: Handle buy form submission
+  };
+
+  const handleSellSubmit = (e) => {
+    // e.preventDefault();
+    // TODO: Handle sell form submission
+  };
+
+
   const handleTestButton = (token) => {
     setTicker(token);
   };
@@ -31,6 +62,10 @@ const TickerSearch = () => {
       setSearchResults(filteredResults);
     }
   };
+
+  useEffect(() => {
+    setTotalValue(amount * (tokenData ? tokenData.market_data.current_price.gbp : 0));
+  }, [amount, tokenData]);
 
   useEffect(() => {
     const fetchTokenData = async () => {
@@ -101,7 +136,7 @@ const TickerSearch = () => {
       </div>
       {showBuyPopup && (
         <div className='buyScreen'>
-          <form>
+          <form onSubmit={handleBuySubmit}>
             {tokenData && (
               <>
                 <p>Token Name: {tokenData.name}</p>
@@ -111,9 +146,9 @@ const TickerSearch = () => {
             <p>Account Balance (GBP): Insert Account Balance</p>
             <label>
               Amount:
-              <input type='number' name='amount' placeholder='Enter Amount' />
+              <input type='number' name='amount' placeholder='Enter Amount'  onChange={handleAmountChange} />
             </label>
-            <p>Total Value (GBP): Calculate Value</p>
+            <p>Total Value (GBP): {calculateTotalValue(amount, tokenData)}</p>
             <button type='submit'>Buy</button>
             <button onClick={() => setShowBuyPopup(false)}>Cancel</button>
           </form>
@@ -121,7 +156,7 @@ const TickerSearch = () => {
       )}
       {showSellPopup && (
         <div className='buyScreen'>
-        <form>
+        <form onSubmit={handleSellSubmit}>
           {tokenData && (
             <>
               <p>Token Name: {tokenData.name}</p>
@@ -131,9 +166,9 @@ const TickerSearch = () => {
           <p>Account Balance (GBP): Insert Account Balance</p>
           <label>
             Amount:
-            <input type='number' name='amount' placeholder='Enter Amount' />
+            <input type='number' name='amount' placeholder='Enter Amount' onChange={handleAmountChange} />
           </label>
-          <p>Total Value (GBP): Calculate Value</p>
+          <p>Total Value (GBP): {calculateTotalValue(amount, tokenData)}</p>
           <button type='submit'>Sell</button>
           <button onClick={() => setShowBuyPopup(false)}>Cancel</button>
         </form>
