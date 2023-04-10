@@ -1,0 +1,110 @@
+.portfolio-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.balances-container {
+    display: flex;
+    margin-bottom: 50px;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    margin-left: 50px;
+}
+
+.button-container button {
+    margin-top:2px;
+}
+
+.balance-card {
+    background: linear-gradient(90deg, rgba(0, 212, 255, 1) 50%, rgba(67, 57, 251, 1) 100%);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    width: 270px;
+    height: 100px;
+    flex-direction: column;
+    justify-content: center;
+    margin-right: 30px;
+}
+
+.cash-balance-card {
+    background: linear-gradient(90deg, rgba(240, 183, 0, 1) 50%, rgba(251, 57, 106, 1) 100%);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    width: 300px;
+    height: 100px;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.balance-label {
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.balance-value {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.cash-balance-label {
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.cash-balance-value {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.coin-list {
+    width: 100%;
+    max-width: 800px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.coin-header {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    border-bottom: 2px solid #ccc;
+}
+
+th {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: left;
+    padding: 10px 0;
+}
+
+tbody tr {
+    height: 60px;
+}
+
+.coin-col {
+    font-size: 16px;
+}
+
+.coin-name-col {
+    width: 50%;
+}

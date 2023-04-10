@@ -1,7 +1,7 @@
 import React from 'react';
 import { ReactComponent as Logo } from 'assets/logo.svg';
 import {Link, useNavigate} from 'react-router-dom';
-import { FaHome, FaChartLine, FaBriefcase, FaHeadset, FaSignOutAlt } from 'react-icons/fa';
+import { FaHome, FaWrench, FaBriefcase, FaHeadset, FaSignOutAlt } from 'react-icons/fa';
 import './style.css';
 
 const Sidebar = ({ onSelection }) => {
@@ -41,8 +41,8 @@ const Sidebar = ({ onSelection }) => {
 
       <ul>
         <li onClick={() => handleItemClick('home')}><div className="icon" ><FaHome /></div><div className="item-name">Home</div></li>
-        <li onClick={() => handleItemClick('trade')}><div className="icon" ><FaChartLine /></div><div className="item-name">Trade</div></li>
         <li onClick={() => handleItemClick('portfolio')}><div className="icon" ><FaBriefcase /></div><div className="item-name">Portfolio</div></li>
+        <li onClick={() => handleItemClick('setting')}><div className="icon" ><FaWrench /></div><div className="item-name">Setting</div></li>
         <li onClick={() => handleItemClick('support')}><div className="icon" ><FaHeadset /></div><div className="item-name">Support</div></li>
       </ul>
       <ul className="signout">
