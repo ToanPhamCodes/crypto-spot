@@ -8,6 +8,116 @@
 }
 
 
+
+.App-header {
+  background-color: #ffffff;
+  font-size: 10px;
+  width: 50%;
+  height: 100%;
+}
+
+
+.GraphChart{
+  width: 60vw;
+  height: 50vh;
+  float: left;
+}
+.intervals{
+  margin-left: 12vw;
+}
+
+.GraphPriceDetails{
+  width: auto;
+  height: auto;
+}
+.GraphPriceDetails p{
+  background-color: blue;
+}
+
+.GraphPriceDetails #currentPrice{
+  text-align: center;
+  width: 30%;
+  float: left;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  border-radius: 10px;
+  margin-left: 2%;
+
+}
+.GraphPriceDetails #monetaryChange{
+  text-align: center;
+  width: 30%;
+  float: left;
+  margin-left: 3%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  border-radius: 10px;
+
+
+}
+.GraphPriceDetails #percentChange{
+  text-align: center;
+  width: 30%;
+  float: left;
+  margin-left: 3%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  border-radius: 10px;
+
+}
+
+.dashBoardSearchDiv{
+  float: left;
+  margin-top:10vh;
+  width: 60vw;
+  height: 40vh;
+}
+.dashBoardSearchInput{
+  width: 58vw;
+  margin-left: 0.75%;
+  font-size: 3vh;
+}
+
+.testToken {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.testToken img {
+  height: 3vh;
+  margin-right: 10px;
+}
+
+.testToken p {
+  margin: 0;
+}
+.testToken:hover{
+  background-color: #007bff;
+  color:white;
+  cursor: pointer;
+}
+
+
+.tradeTokenDiv{
+  float:right;
+  width:20vw;
+  height: 50vh;
+  margin-top: 2vh;
+  text-align: center;
+}
+.tradeTokenDiv button{
+  width: 70%;
+  font-size: 3vh;
+  border-radius: 10px;
+}
+
+
 .App-header {
   background-color: #ffffff;
   font-size: 10px;
@@ -16,7 +126,7 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: blue;
 }
 .GraphComponent {
   width: 100%;
@@ -32,7 +142,8 @@
   height: auto;
 }
 .GraphPriceDetails p{
-  background-color: #61dafb;
+  background-color: #007bff;
+  color: white;
 }
 
 .GraphPriceDetails #currentPrice{

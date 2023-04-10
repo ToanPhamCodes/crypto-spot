@@ -4,28 +4,19 @@ import './TickerSearch.css';
 
 const TickerSearch = () => {
   const [ticker, setTicker] = useState('bitcoin');
-  const [searchTerm, setSearchTerm] = useState('');
   const [days, setDays] = useState(5);
 
-  const handleSearch = () => {
-    setTicker(searchTerm.toLowerCase());
+
+
+  const handleTestButton = (token) => {
+    setTicker(token);
   };
 
   return (
     <div className='App'>
-      <input
-        type="text"
-        placeholder="Enter a ticker symbol (e.g. bitcoin)"
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-      />
-
-      <button onClick={handleSearch}>Search</button>
-
-      <div className='GraphComponent'> 
-        <div className='GraphChart'>
-          
-          <PriceChart ticker={ticker} days={days} setDays={setDays} />
+      <div className='GraphChart'>
+        <PriceChart ticker={ticker} days={days} />
+        <div className='intervals'>
           <button onClick={() => setDays(1)}>1 Day</button>
           <button onClick={() => setDays(5)}>5 Days</button>
           <button onClick={() => setDays(10)}>10 Days</button>
@@ -35,6 +26,22 @@ const TickerSearch = () => {
           <button onClick={() => setDays(30)}>30 Days</button>
         </div>
       </div>
+      <div className='tradeTokenDiv'>
+        <p>Current Price:</p>
+        <button>Buy</button>
+        <button>Sell</button>
+      </div>
+      <div className='dashBoardSearchDiv'>
+        <input className='dashBoardSearchInput'></input>
+        <div className='dashBoardSearchResultsDiv'>
+            <p className='testToken' onClick={() => handleTestButton('bitcoin')}>Bitcoin</p>
+            <p className='testToken' onClick={() => handleTestButton('cardano')}>Cardano</p>
+            <p className='testToken' onClick={() => handleTestButton('ethereum')}>Ethereum</p>
+            <p className='testToken' onClick={() => handleTestButton('dogecoin')}>DogeCoin</p>
+        </div>
+      </div>
+      
+      
     </div>
   );
 };

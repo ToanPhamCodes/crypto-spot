@@ -32,7 +32,7 @@ const PriceChart = ({ ticker, days }) => {
   };
 
   return (
-    <div className='PriceGraph'>
+    <div>
       <div className='GraphPriceDetails'>
           <p id='currentPrice'>Current Price: {currentPrice} (GBP)</p>
           <p id='monetaryChange'>{`${days} Day Change: `}{monetaryChange} (GBP)</p>
@@ -41,6 +41,7 @@ const PriceChart = ({ ticker, days }) => {
 
       {tokenPrices && (
         <VictoryChart
+          height={400} width={1000}
           theme={VictoryTheme.material}
           style={{
             axisLabel: { fontSize: 5 },
@@ -59,11 +60,11 @@ const PriceChart = ({ ticker, days }) => {
           <VictoryLine
             data={transformData(tokenPrices)}
             interpolation="basis"
-            style={{ data: { strokeWidth: 0.5 } }}
+            style={{ data: { strokeWidth: 1.5 } }}
             labels={({ datum }) => `Price: ${datum.y.toFixed(2)}`}
             labelComponent={
               <VictoryTooltip
-                style={{ fontSize: 8 }}
+                style={{ fontSize: 20 }}
               />
             }
           />
