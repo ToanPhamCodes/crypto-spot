@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './style.css';
 
-const SignIn = () => {
+const SignIn = ({setIsLoggedIn}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [firstName, setFirstName] = useState('');
@@ -39,6 +39,7 @@ const SignIn = () => {
       const response = await signUp(email, password, firstName, lastName);
       if (response.user_id) {
         // Navigate to the dashboard
+        setIsLoggedIn(true);
         navigate('/dashboard');
       } else {
         // Handle sign up error
@@ -49,6 +50,7 @@ const SignIn = () => {
       const response = await signIn(email, password);
       if (response.user_id) {
         // Navigate to the dashboard
+        setIsLoggedIn(true);
         navigate('/dashboard');
       } else {
         window.alert("Failed to sign in. Please try again.");
