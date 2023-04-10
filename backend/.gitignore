@@ -1,6 +1,2 @@
-node_modules
-.vim
-.vs_code
-env
-__pycache__
-.DS_Store
+__pycache__/
+env/

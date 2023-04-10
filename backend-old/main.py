@@ -1,16 +1,14 @@
 from fastapi import FastAPI, HTTPException, Depends, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.middleware.sessions import SessionMiddleware
+
 from Auth import sign_up, sign_in, sign_out
 from User import UserAccount
-
-
 from pydantic import BaseModel
 import httpx
 
 from models.cryptocurrencies import Cryptocurrency
 from models.auth import SignUpData, SignInData
-
 
 app = FastAPI()
 
@@ -50,11 +48,7 @@ async def handle_sign_out(request: Request):
     return {"detail": "Successfully logged out"}
 
 
-
-
-
-@app.get("/cryptocurrency/{symbol}", response_model=Cryptocurrency)
-async def get_cryptocurrency(symbol: str):
+async def get_cryptocurrency(symbol: str) -> Cryptocurrency:
     url = f"https://api.coingecko.com/api/v3/coins/{symbol}"
     response = httpx.get(url)
     response.raise_for_status()
@@ -62,7 +56,7 @@ async def get_cryptocurrency(symbol: str):
     data = response.json()
     cryptocurrency = Cryptocurrency(
         name=data["name"],
-        symbol=data["symbol"].upper(),
+        symbol=data["symbol"].upper(),  
         current_price=data["market_data"]["current_price"]["usd"],
         high_24h=data["market_data"]["high_24h"]["usd"],
         low_24h=data["market_data"]["low_24h"]["usd"],
@@ -72,5 +66,6 @@ async def get_cryptocurrency(symbol: str):
 
 @app.post("/buy-cryptocurrency")
 async def handle_buy_cryptocurrency(user_id: str, cryptocurrency: Cryptocurrency, amount: float):
-    response = buy_cryptocurrency(user_id, cryptocurrency, amount)
+    user = UserAccount.objects.get(email=user_id)
+    response = user.buy_cryptocurrency(cryptocurrency, amount)
     return {"message": response}
