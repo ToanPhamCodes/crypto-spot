@@ -40,9 +40,31 @@ const TickerSearch = () => {
 
   return (
     <div className='App'>
+<<<<<<< HEAD
       <div className='GraphChart'>
         <PriceChart ticker={ticker} days={days} />
         <div className='intervals'>
+=======
+      <input
+        type="text"
+        placeholder="Enter a ticker symbol (e.g. bitcoin)"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+      />
+
+      <button onClick={handleSearch}>Search</button>
+
+      <div className='GraphComponent'> 
+        <div className='GraphChart'>
+          
+          <PriceChart ticker={ticker} days={days} setDays={setDays} />
+          <button onClick={() => setDays(1)}>1 Day</button>
+          <button onClick={() => setDays(5)}>5 Days</button>
+          <button onClick={() => setDays(10)}>10 Days</button>
+          <button onClick={() => setDays(15)}>15 Days</button>
+          <button onClick={() => setDays(20)}>20 Days</button>
+          <button onClick={() => setDays(25)}>25 Days</button>
+>>>>>>> 99a936f4cba99f5cde4c2865608da7ac308e36f6
           <button onClick={() => setDays(30)}>30 Days</button>
         </div>
       </div>
