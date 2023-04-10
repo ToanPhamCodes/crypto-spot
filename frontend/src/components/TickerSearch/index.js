@@ -5,9 +5,16 @@ import './style.css';
 const TickerSearch = () => {
   const [ticker, setTicker] = useState('bitcoin');
   const [days, setDays] = useState(5);
-  const [tokenData, setTokenData] = useState(null);
+  
   const [searchResults, setSearchResults] = useState([]);
   const [originalSearchResults, setOriginalSearchResults] = useState(null);
+
+
+  const [tokenData, setTokenData] = useState(null);
+
+
+  const [showBuyPopup, setShowBuyPopup] = useState(false);
+  const [showSellPopup, setShowSellPopup] = useState(false);
 
   const handleTestButton = (token) => {
     setTicker(token);
@@ -27,9 +34,10 @@ const TickerSearch = () => {
 
   useEffect(() => {
     const fetchTokenData = async () => {
-      const response = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${ticker}&vs_currencies=gbp&include_market_cap=true&include_24hr_vol=true&include_24hr_change=false`);
+      const response = await fetch(`https://api.coingecko.com/api/v3/coins/${ticker}?localization=false&tickers=true&market_data=true&community_data=false&developer_data=false&sparkline=false`);
       const data = await response.json();
-      setTokenData(data[ticker]);
+      setTokenData(data);
+
     };
     fetchTokenData();
   }, [ticker]);
@@ -57,17 +65,27 @@ const TickerSearch = () => {
         </div>
       </div>
       <div className='tradeTokenDiv'>
-        <p>Token Name: {ticker}</p>
+        <div className='tradeTokenButtons'>
+            <button onClick={() => setShowBuyPopup(true)}>Buy</button>
+            <button onClick={() => setShowSellPopup(true)}>Sell</button>
+        </div>
+        <div className='tradeTokenInfo'>
+          {tokenData && (
+            <>
 
-        {tokenData && (
-          <>
-            <p>Buy Price /GBP): {tokenData.gbp}</p>
-            <p>Market Cap (GBP): {tokenData.gbp_market_cap}</p>
-            <p>24H Volume: {tokenData.gbp_24h_vol}</p>
-            <button>Buy</button>
-            <button>Sell</button>
-          </>
-        )}
+              <p>Token: {tokenData.name}</p>
+              <img src={tokenData.image.large} alt={`${tokenData.name} logo`} height='128px' />
+              <p>Buy Price (GBP): {tokenData.market_data.current_price.gbp}</p>
+              <p>24 Hour High (GBP): {tokenData.market_data.high_24h.gbp}</p>
+              <p>24 Hour Low (GBP): {tokenData.market_data.low_24h.gbp}</p>
+              <p>All Time High (GBP): {tokenData.market_data.ath.gbp}</p>
+              <p>All Time Low (GBP): {tokenData.market_data.atl.gbp}</p>
+              <p>Market Cap (GBP): {tokenData.market_data.market_cap.gbp}</p>
+              <p>24H Volume: {tokenData.market_data.total_volume.gbp}</p>
+
+            </>
+          )}
+        </div>
       </div>
       <div className='dashBoardSearchDiv'>
         <input className='dashBoardSearchInput' onChange={handleSearchInputChange} />
@@ -81,6 +99,46 @@ const TickerSearch = () => {
           ))}
         </div>
       </div>
+      {showBuyPopup && (
+        <div className='buyScreen'>
+          <form>
+            {tokenData && (
+              <>
+                <p>Token Name: {tokenData.name}</p>
+                <p>Current Price (GBP): {tokenData.market_data.current_price.gbp}</p>
+              </>
+            )}
+            <p>Account Balance (GBP): Insert Account Balance</p>
+            <label>
+              Amount:
+              <input type='number' name='amount' placeholder='Enter Amount' />
+            </label>
+            <p>Total Value (GBP): Calculate Value</p>
+            <button type='submit'>Buy</button>
+            <button onClick={() => setShowBuyPopup(false)}>Cancel</button>
+          </form>
+        </div>
+      )}
+      {showSellPopup && (
+        <div className='buyScreen'>
+        <form>
+          {tokenData && (
+            <>
+              <p>Token Name: {tokenData.name}</p>
+              <p>Current Price (GBP): {tokenData.market_data.current_price.gbp}</p>
+            </>
+          )}
+          <p>Account Balance (GBP): Insert Account Balance</p>
+          <label>
+            Amount:
+            <input type='number' name='amount' placeholder='Enter Amount' />
+          </label>
+          <p>Total Value (GBP): Calculate Value</p>
+          <button type='submit'>Sell</button>
+          <button onClick={() => setShowBuyPopup(false)}>Cancel</button>
+        </form>
+      </div>
+      )}
     </div>
   );
 };

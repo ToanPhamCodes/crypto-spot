@@ -174,3 +174,69 @@
   border-radius: 10px;
 
 }
+
+
+
+.buyScreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.buyScreen form {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.buyScreen label {
+  margin-bottom: 10px;
+}
+
+.buyScreen input {
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  margin-left: 10px;
+  border-style: solid;
+  border-width: 1px;
+}
+
+.buyScreen button {
+  font-size: 3vh;
+  margin-top: 10px;
+  padding: 5px;
+  border: none;
+  border-radius: 10px;
+  background-color: red;
+  color: white;
+  cursor: pointer;
+}
+
+.buyScreen button[type="submit"] {
+  background-color: #007bff;
+}
+
+.buyScreen button[type="submit"]:hover {
+  background-color: green;
+}
+
+.tradeTokenButtons{
+  margin-top: 15vh;
+  height: 10vh;
+  width: auto;
+}
+
+.tradeTokenInfo{
+  margin-top: 10vh;
+  height: 15vh;
+  width: auto;
+}
