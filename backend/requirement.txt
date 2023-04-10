@@ -4,3 +4,4 @@ pydantic
 pymongo
 motor
 starlette
+itsdangerous
