@@ -58,8 +58,11 @@ const TickerSearch = () => {
       </div>
       <div className='tradeTokenDiv'>
         <p>Token Name: {ticker}</p>
+
         {tokenData && (
           <>
+            <p>Buy Price /GBP): {tokenData.gbp}</p>
+            <p>Market Cap (GBP): {tokenData.gbp_market_cap}</p>
             <p>24H Volume: {tokenData.gbp_24h_vol}</p>
             <button>Buy</button>
             <button>Sell</button>

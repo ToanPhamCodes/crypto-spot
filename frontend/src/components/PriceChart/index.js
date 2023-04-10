@@ -35,8 +35,8 @@ const PriceChart = ({ ticker, days }) => {
     <div>
       <div className='GraphPriceDetails'>
           <p id='currentPrice'>Current Price: {currentPrice} (GBP)</p>
-          <p id='monetaryChange'>{`${days} Day Change: `}{monetaryChange} (GBP)</p>
-          <p id='percentChange'>{`${days} Day Change: `}{percentChange}%</p>
+          <p id='monetaryChange' style={{ backgroundColor: monetaryChange >= 0 ? "green" : "red" }}>{`${days} Day Change: `}{monetaryChange} (GBP)</p>
+          <p id='percentChange' style={{ backgroundColor: monetaryChange >= 0 ? "green" : "red" }}>{`${days} Day Change: `}{percentChange}%</p>
       </div>
 
       {tokenPrices && (
