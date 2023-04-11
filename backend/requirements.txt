@@ -4,3 +4,8 @@ httpx
 pydantic
 pymongo
 uvicorn
+
+python-jose[cryptography]
+jose
+passlib
+passlib[bcrypt]
