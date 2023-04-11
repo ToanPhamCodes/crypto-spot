@@ -22,22 +22,16 @@ class Account(BaseModel):
   def cryptoBalance(self):
     return self.cryptoWallets.amount
   
-  def buyCrypto(self, name: str, amount: float):
-    # Check coin exists and get price
-    # if coin does not exist raise coin not found
-    currentPrice = 1.0
-    cashValue = amount * currentPrice
+  def buyCrypto(self, name: str, amount: float, coinPrice: float):
+    cashValue = amount * coinPrice
     try:
       self.cashWallet.withdrawCash(cashValue)
       self.cryptoWallets.depositCoin(name, amount)
     except:
       raise ValueError("Insufficient funds")
     
-  def sellCrypto(self, name: str, amount: float):
-    # Check coin exists and get price
-    # if coin does not exist raise coin not found
-    currentPrice = 1.0
-    cashValue = amount * currentPrice
+  def sellCrypto(self, name: str, amount: float, coinPrice: float):
+    cashValue = amount * coinPrice
     try:
       self.cryptoWallets.withdrawCoin(name, amount)
       self.cashWallet.depositCash(cashValue)

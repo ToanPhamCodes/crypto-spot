@@ -86,7 +86,7 @@ class CashWallet(BaseModel):
     """Deposit cash to wallet from card"""
     for card in self.cards:
       if card.cardNumber == cardNumber:
-        if amount > card.balance:
+        if float(amount) > card.balance:
           raise ValueError("Insufficient funds")
         card.withdraw(amount)
         self.depositCash(amount)

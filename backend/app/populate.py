@@ -15,11 +15,11 @@ def populateUser(firstName: str, lastName: str, email: str, phoneNumber: str, pa
     user.addCard(card2)
 
     # Deposit funds from the cards
-    user.depositCash("1111111111111111", 50000)
-    user.depositCash("2222222222222222", 50000)
+    user.depositCash("1111111111111111", 100000)
+    user.depositCash("2222222222222222", 100000)
 
     # Buy bitcoin with the funds
-    user.buyCrypto("bitcoin", 0.1)
+    user.buyCrypto("bitcoin", 2, 10000)
 
     db.users.insert_one(user.dict())
     db.cards.insert_one(card1.dict())

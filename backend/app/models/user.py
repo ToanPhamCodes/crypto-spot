@@ -7,7 +7,7 @@ class User(BaseModel):
   _id: ObjectId = ObjectId()
   firstName: str
   lastName: str
-  email: EmailStr
+  email: str
   phoneNumber: str
   password: str
   account: Account = Account(userId=_id)
@@ -33,15 +33,15 @@ class User(BaseModel):
   def getCrypto(self):
     return self.account.getCrypto()
   
-  def buyCrypto(self, name: str, amount: float):
+  def buyCrypto(self, name: str, amount: float, price: float):
     try:
-      self.account.buyCrypto(name, amount)
+      self.account.buyCrypto(name, amount, price)
     except ValueError as e:
       raise ValueError(f"Error buying crypto: {str(e)}")
 
-  def sellCrypto(self, name: str, amount: float):
+  def sellCrypto(self, name: str, amount: float, price: float):
     try:
-      self.account.sellCrypto(name, amount)
+      self.account.sellCrypto(name, amount, price)
     except ValueError as e:
       raise ValueError(f"Error selling crypto: {str(e)}")
 
