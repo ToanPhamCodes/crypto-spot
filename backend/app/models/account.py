@@ -43,7 +43,7 @@ class Account(BaseModel):
     try:
       return self.cryptoWallets.getCoins()
     except:
-      return []
+      return {}
   
   def cardDeposit(self, cardNumber: str, amount: float):
     """Deposits cash to wallet"""
