@@ -1,5 +1,6 @@
+bson
 fastapi
-uvicorn
-pymongo
 httpx
 pydantic
+pymongo
+uvicorn

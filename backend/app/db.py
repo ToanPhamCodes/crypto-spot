@@ -1,7 +1,7 @@
 from pymongo import MongoClient
 
 client = MongoClient("mongodb+srv://phamtony1911:123@databasetest.090hg24.mongodb.net/?retryWrites=true&w=majority&tlsAllowInvalidCertificates=true")
-db = client["mydatabase"]
+db = client["cryptospot"]
 
 try:
     client.admin.command('ping')
