@@ -1,0 +1,6 @@
+bson
+fastapi
+httpx
+pydantic
+pymongo
+uvicorn
