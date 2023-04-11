@@ -21,8 +21,19 @@ const SignIn = ({setIsLoggedIn}) => {
     return await response.json();
   };
   
+  // const signIn = async (email, password) => {
+  //   const response = await fetch("http://127.0.0.1:8000/signin", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({ email, password }),
+  //   });
+  //   return await response.json();
+  // };
+
   const signIn = async (email, password) => {
-    const response = await fetch("http://127.0.0.1:8000/signin", {
+    const response = await fetch("http://127.0.0.1:8000/auth/signin", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -51,7 +62,7 @@ const SignIn = ({setIsLoggedIn}) => {
       if (response.user_id) {
         // Navigate to the dashboard
         setIsLoggedIn(true);
-        navigate('/dashboard');
+        navigate('/dashboard', { state: { userId: response.user_id } });
       } else {
         window.alert("Failed to sign in. Please try again.");
       }

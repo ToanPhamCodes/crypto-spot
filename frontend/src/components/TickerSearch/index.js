@@ -143,7 +143,7 @@ const TickerSearch = () => {
                 <p>Current Price (GBP): {tokenData.market_data.current_price.gbp}</p>
               </>
             )}
-            <p>Account Balance (GBP): {totalValue}</p>
+            <p>Account Balance (GBP): $0</p>
             <label>
               Amount:
               <input type='number' name='amount' placeholder='Enter Amount'  onChange={handleAmountChange} />
@@ -170,7 +170,7 @@ const TickerSearch = () => {
           </label>
           <p>Total Value (GBP): {calculateTotalValue(amount, tokenData)}</p>
           <button type='submit'>Sell</button>
-          <button onClick={() => setShowBuyPopup(false)}>Cancel</button>
+          <button onClick={() => setShowSellPopup(false)}>Cancel</button>
         </form>
       </div>
       )}

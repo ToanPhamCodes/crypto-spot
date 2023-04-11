@@ -21,11 +21,19 @@ async def get_user(user_id: str):
     raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
   return user
 
+#Get user by email
+@app.get("/users/by-email", response_model=User)
+async def get_user_by_email(email: str):
+    user = db.users.find_one({"email": email})
+    if not user:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
+    return user
+
 #Create a new user
 @app.post("/user", response_model=User)
 async def create_user(user: User = Body(...)):
   user_id = db.users.insert_one(user.dict()).inserted_id
-  user = db.users.find_one({"_id": user_id})
+  user = db.users.find_one({"_id": user_id}) # type: ignore
   return User(**user)
 
 #Update a user - NOT WORKING

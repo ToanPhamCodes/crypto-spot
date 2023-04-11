@@ -45,7 +45,7 @@ class CryptoWallet(BaseModel):
         "coin": coin.name,
         "balance": coin.amount
       })
-    return coinInfo
+    return coinInfo # type: ignore
   
 
 class CashWallet(BaseModel):
