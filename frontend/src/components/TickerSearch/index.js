@@ -143,7 +143,7 @@ const TickerSearch = () => {
                 <p>Current Price (GBP): {tokenData.market_data.current_price.gbp}</p>
               </>
             )}
-            <p>Account Balance (GBP): Insert Account Balance</p>
+            <p>Account Balance (GBP): {totalValue}</p>
             <label>
               Amount:
               <input type='number' name='amount' placeholder='Enter Amount'  onChange={handleAmountChange} />
