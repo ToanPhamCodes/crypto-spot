@@ -60,7 +60,7 @@ const Dashboard = () => {
       case 'portfolio':
         return <div><Portfolio balance={user ? user.account.cashWallet.balance : 0} coins={coins} /></div>;
       case 'support':
-        return <div><Contact></Contact></div>;
+        return <div><Contact/></div>;
       default:
         return null;
     }
