@@ -133,7 +133,7 @@ const Portfolio = ({ balance, coins, userId }) => {
                     <label htmlFor="amount">Amount (GBP):</label>
                     <input type="number" id="amount" name="amount" onChange={handleAmountChange} />
                     <button type="submit">Withdraw</button>
-                    <button type="button" onClick={() => setDepositPopup(false)}>Cancel</button>
+                    <button type="button" onClick={() => setWithdrawPopup(false)}>Cancel</button>
                     </form>
                 </div>
             </div>
