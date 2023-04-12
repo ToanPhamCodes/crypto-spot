@@ -23,7 +23,7 @@
   float: left;
 }
 .intervals{
-  margin-left: 12vw;
+  margin-left: 16.5vw;
 }
 
 .GraphPriceDetails{
@@ -236,10 +236,17 @@
 }
 
 .tradeTokenInfo{
-  margin-top: 10vh;
-  height: 15vh;
+  margin-top: 15vh;
+  height: auto;
   width: auto;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  background-color: #007bff;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
 }
+
 
 .sellScreen {
   position: fixed;
@@ -279,7 +286,7 @@
   margin-top: 10px;
   padding: 5px;
   border: none;
-  border-radius: 10px;
+  border-radius: 10px; 
   background-color: red;
   color: white;
   cursor: pointer;
