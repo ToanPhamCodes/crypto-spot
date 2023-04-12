@@ -73,14 +73,14 @@ const Portfolio = ({ balance, coins, userId }) => {
             <div className="balances-container">
                 <div className="balance-card">
                     <div className="balance-label">Wallet Balance</div>
-                    <div className="balance-value">$0</div>
+                    <div className="balance-value">£0</div>
     
     
                 </div>
     
                 <div className="cash-balance-card">
                     <div className="cash-balance-label">Cash Balance</div>
-                    <div className="cash-balance-value">${balance}</div>
+                    <div className="cash-balance-value">£{balance}</div>
                 </div>
 
                 <div className="button-container">
