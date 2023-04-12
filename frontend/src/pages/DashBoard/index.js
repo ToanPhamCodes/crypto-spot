@@ -3,6 +3,7 @@ import Sidebar from 'components/SideBar';
 import TickerSearch from 'components/TickerSearch';
 import Contact from 'components/Contact';
 import Portfolio from 'components/Portfolio';
+import Settings from 'components/Settings';
 
 import { useLocation } from 'react-router-dom';
 import './style.css';
@@ -30,6 +31,10 @@ const Dashboard = () => {
 
   const coins = user ? user.account.cryptoWallets.coins : [];
   const balance = user ? user.account.cashWallet.balance : 0;
+  const userName = user ? user.firstName: "";
+  const userLastName = user ? user.lastName: "";
+  const userEmail = user ? user.email: "";
+  const userPassword = user ? user.password: "";
 
 
   const renderComponent = () => {
@@ -37,7 +42,7 @@ const Dashboard = () => {
       case 'home':
         return <div><TickerSearch balance={balance} userId={userId}/></div>;
       case 'setting':
-        return <div>Setting</div>;
+        return <div><Settings userName={userName} userLastName={userLastName} userEmail={userEmail} userPassword={userPassword}/></div>;
       case 'portfolio':
         return <div><Portfolio balance={balance} coins={coins} /></div>;
       case 'support':
