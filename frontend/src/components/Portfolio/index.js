@@ -1,10 +1,35 @@
-import React, {useState}from "react";
+import React, {useState, useEffect}from "react";
 import "./style.css";
 
 const Portfolio = ({ balance, coins, userId }) => {
     const [showWithdrawPopup, setWithdrawPopup] = useState(false);
     const [showDepositPopup, setDepositPopup] = useState(false);
+    const [totalValue, setTotalValue] = useState(0);
 
+    useEffect(() => {
+        const fetchData = async () => {
+          const ids = coins.map((coin) => coin.name.toLowerCase());
+          const url = `https://api.coingecko.com/api/v3/simple/price?ids=${ids}&vs_currencies=gbp`;
+    
+          try {
+            const response = await fetch(url);
+            const data = await response.json();
+    
+            let value = 0;
+            coins.forEach((coin) => {
+              const coinValue = data[coin.name.toLowerCase()].gbp * coin.amount;
+              value += coinValue;
+            });
+    
+            setTotalValue(value);
+          } catch (error) {
+            console.error(error);
+          }
+        };
+    
+        fetchData();
+      }, [coins]);
+    
 
     const deposit = async (userId, cardNumber, amount) => {
         const response = await fetch(`http://127.0.0.1:8000/user/${userId}/deposit`, {
@@ -73,14 +98,14 @@ const Portfolio = ({ balance, coins, userId }) => {
             <div className="balances-container">
                 <div className="balance-card">
                     <div className="balance-label">Wallet Balance</div>
-                    <div className="balance-value">£0</div>
+                    <div className="balance-value">£{totalValue.toFixed(2)}</div>
     
     
                 </div>
     
                 <div className="cash-balance-card">
                     <div className="cash-balance-label">Cash Balance</div>
-                    <div className="cash-balance-value">£{balance}</div>
+                    <div className="cash-balance-value">£{balance.toFixed(2)}</div>
                 </div>
 
                 <div className="button-container">

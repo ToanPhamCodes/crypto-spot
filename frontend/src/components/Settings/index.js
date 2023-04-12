@@ -106,13 +106,13 @@ const handleDeleteUser = async (e) => {
             <form onSubmit={handleEditUser}>
               <p>Edit Details Pop Up</p>
               <label htmlFor="firstName">First Name:</label>
-              <input type="text" id="firstName" name="firstName" onChange={handleFirstNameChange}/>
+              <input type="text" id="firstName" name="firstName" onChange={handleFirstNameChange} required/>
               <label htmlFor="lastName">Last Name:</label>
-              <input type="text" id="lastName" name="lastName" onChange={handleLastNameChange}/>
+              <input type="text" id="lastName" name="lastName" onChange={handleLastNameChange} required/>
               <label htmlFor="email">Email:</label>
-              <input type="email" id="email" name="email" onChange={handleEmailChange}/>
+              <input type="email" id="email" name="email" onChange={handleEmailChange} required/>
               <label htmlFor="password">Password:</label>
-              <input type="text" id="password" name="password" onChange={handlePasswordChange}/>
+              <input type="text" id="password" name="password" onChange={handlePasswordChange} required/>
               <button type="submit">Confirm Edit</button>
               <button type="button" onClick={() => setEditPopup(false)}>Cancel</button>
             </form>
