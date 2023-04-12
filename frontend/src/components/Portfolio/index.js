@@ -1,18 +1,73 @@
 import React, {useState}from "react";
 import "./style.css";
 
-const Portfolio = ({ balance, coins }) => {
+const Portfolio = ({ balance, coins, userId }) => {
     const [showWithdrawPopup, setWithdrawPopup] = useState(false);
     const [showDepositPopup, setDepositPopup] = useState(false);
 
-    const handleDeposit = (event) => {
-        //handle the user deposit here
-    }
-    const handleWithdraw = (event) => {
-        //handle the user withdrawal here
-    }
+    const deposit = async (userId, cardNumber, amount) => {
+        const response = await fetch(`http://127.0.0.1:8000/user/${userId}/deposit`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ cardNumber, amount }),
+        });
+      
+        return await response.json();
+    };
+    const withdraw = async (userId, cardNumber, amount) => {
+        const response = await fetch(`http://127.0.0.1:8000/user/${userId}/withdraw`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ cardNumber, amount }),
+        });
+      
+        return await response.json();
+    };
+    const [cardNumber, setCardNumber] = useState(''); 
+    const [amount, setAmount] = useState(0);
+
+    const handleCardNumberChange = (e) => {
+        setCardNumber(e.target.value);
+    };
+    const handleAmountChange = (e) => {
+        setAmount(e.target.value);
+    };
+
+    const handleDeposit = async (e) => {
+        e.preventDefault();
+        // TODO: Handle deposit form submission
+        try {
+          const response = await deposit(userId, cardNumber, amount);
+          console.log(response);
+          // Update user balance 
+          setDepositPopup(false);
+        } catch (error) {
+          console.error(error);
+          // Show an error message to the user if necessary
+        }
+      };
+
+
+      const handleWithdraw = async (e) => {
+        e.preventDefault();
+        // TODO: Handle withdraw form submission
+        try {
+          const response = await withdraw(userId, cardNumber, amount);
+          console.log(response);
+          // Update user balance 
+          setWithdrawPopup(false);
+        } catch (error) {
+          console.error(error);
+          // Show an error message to the user if necessary
+        }
+      };
     return (
         <div className="portfolio-container">
+            <p id="test"></p>
             <div className="balances-container">
                 <div className="balance-card">
                     <div className="balance-label">Wallet Balance</div>
@@ -56,8 +111,10 @@ const Portfolio = ({ balance, coins }) => {
             <div className="popUpScreen">
                 <div className="popUpScreenDiv">
                     <form onSubmit={handleDeposit}>
+                    <label htmlFor="cardNumber">Card Number:</label>
+                    <input type="text" id="cardNumber" name="cardNumber" onChange={handleCardNumberChange}/>
                     <label htmlFor="amount">Amount (GBP):</label>
-                    <input type="number" id="amount" name="amount" />
+                    <input type="number" id="amount" name="amount" onChange={handleAmountChange}/>
                     <button type="submit">Deposit</button>
                     <button type="button" onClick={() => setDepositPopup(false)}>Cancel</button>
                     </form>
@@ -68,9 +125,11 @@ const Portfolio = ({ balance, coins }) => {
             <div className="popUpScreen">
                 <div className="popUpScreenDiv">
                     <form onSubmit={handleWithdraw}>
-                        <p>Cash Available: {balance} (GBP)</p>
+                    <p>Cash Available: {balance} (GBP)</p>
+                    <label htmlFor="cardNumber">Card Number:</label>
+                    <input type="text" id="cardNumber" name="cardNumber" onChange={handleCardNumberChange}/>
                     <label htmlFor="amount">Amount (GBP):</label>
-                    <input type="number" id="amount" name="amount" />
+                    <input type="number" id="amount" name="amount" onChange={handleAmountChange} />
                     <button type="submit">Withdraw</button>
                     <button type="button" onClick={() => setDepositPopup(false)}>Cancel</button>
                     </form>
