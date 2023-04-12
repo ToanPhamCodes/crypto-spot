@@ -27,6 +27,13 @@ const Dashboard = () => {
     };
 
     fetchUserData();
+    // Set an interval to fetch the user data every 10 seconds
+    const intervalId = setInterval(() => {
+      fetchUserData();
+    }, 10000);
+
+    // Clear the interval when the component unmounts
+    return () => clearInterval(intervalId);
   }, [userId]);
 
   const coins = user ? user.account.cryptoWallets.coins : [];
