@@ -8,7 +8,7 @@ import Settings from 'components/Settings';
 import { useLocation } from 'react-router-dom';
 import './style.css';
 
-const Dashboard = () => {
+const Dashboard = ({setIsLoggedIn}) => {
   const [selectedItem, setSelectedItem] = useState('home');
 
   const location = useLocation();
@@ -62,7 +62,7 @@ const Dashboard = () => {
   return (
     <div className="dashboard">
       <div className="left">
-        <Sidebar onSelection={handleSelection} />
+        <Sidebar onSelection={handleSelection} setIsLoggedIn={setIsLoggedIn} />
       </div>
       <div className="middle">{renderComponent()}</div>
     </div>

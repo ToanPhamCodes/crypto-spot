@@ -28,7 +28,7 @@ function App() {
         </Route>
         <Route
           path="/Dashboard"
-          element={isLoggedIn ? <DashBoard /> : <Navigate to="/SignIn" replace />}
+          element={isLoggedIn ? <DashBoard setIsLoggedIn={setIsLoggedIn}/> : <Navigate to="/SignIn" replace />}
         />
       </Routes>
     </Router>

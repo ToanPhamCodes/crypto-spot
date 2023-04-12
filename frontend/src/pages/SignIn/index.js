@@ -10,17 +10,6 @@ const SignIn = ({ setIsLoggedIn }) => {
   const [isSignUp, setIsSignUp] = useState(false);
   const navigate = useNavigate();
 
-  // const signUp = async (email, password, firstName, lastName) => {
-  //   const response = await fetch("http://127.0.0.1:8000/signup", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({ email, password, first_name: firstName, last_name: lastName }),
-  //   });
-  //   return await response.json();
-  // };
-
   const signUp = async (email, password, firstName, lastName) => {
     const response = await fetch("http://127.0.0.1:8000/auth/signup", {
       method: "POST",
@@ -31,17 +20,6 @@ const SignIn = ({ setIsLoggedIn }) => {
     });
     return await response.json();
   };
-
-  // const signIn = async (email, password) => {
-  //   const response = await fetch("http://127.0.0.1:8000/signin", {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({ email, password }),
-  //   });
-  //   return await response.json();
-  // };
 
   const signIn = async (email, password) => {
     const response = await fetch("http://127.0.0.1:8000/auth/signin", {

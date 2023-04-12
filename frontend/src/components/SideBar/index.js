@@ -4,33 +4,38 @@ import {Link, useNavigate} from 'react-router-dom';
 import { FaHome, FaWrench, FaBriefcase, FaHeadset, FaSignOutAlt } from 'react-icons/fa';
 import './style.css';
 
-const Sidebar = ({ onSelection }) => {
+const Sidebar = ({ onSelection, setIsLoggedIn }) => {
   const handleItemClick = (item) => {
     onSelection(item);
   };
 
   const navigate = useNavigate();
 
-  const signOut = async () => {
-    try {
-      const response = await fetch("http://127.0.0.1:8000/logout", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include", // This is required to send cookies
-      });
+  // const signOut = async () => {
+  //   try {
+  //     const response = await fetch("http://127.0.0.1:8000/logout", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       credentials: "include", // This is required to send cookies
+  //     });
 
-      if (response.ok) {
-        // Successfully logged out
-        navigate('/');
-      } else {
-        // Handle logout error
-        window.alert("Failed to log out. Please try again.");
-      }
-    } catch (error) {
-      console.error("Error logging out:", error);
-    }
+  //     if (response.ok) {
+  //       // Successfully logged out
+  //       navigate('/');
+  //     } else {
+  //       // Handle logout error
+  //       window.alert("Failed to log out. Please try again.");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error logging out:", error);
+  //   }
+  // };
+
+  const signOut = () => {
+    setIsLoggedIn(false);
+    navigate('/');
   };
 
   return (
