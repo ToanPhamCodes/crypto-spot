@@ -14,9 +14,6 @@ from routes.auth import app as authRouter
 
 app = FastAPI()
 
-populateJohn()
-populateJane()
-
 app.add_middleware(
   CORSMiddleware,
   allow_origins=["http://localhost:3000"],

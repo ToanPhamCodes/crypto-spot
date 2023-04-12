@@ -31,17 +31,13 @@ const Portfolio = ({ balance, coins }) => {
                         <tr>
                             <th>#Name</th>
                             <th>Amount</th>
-                            <th>Bought at</th>
-                            <th>Change</th>
                         </tr>
                     </thead>
                     <tbody>
                         {coins.map((coin) => (
                             <tr key={coin.id} className="coin-row">
-                                <td className="coin-col coin-name-col">{coin.name} - {coin.symbol}</td>
+                                <td className="coin-col coin-name-col">{coin.name}</td>
                                 <td className="coin-col">{coin.amount}</td>
-                                <td className="coin-col">{coin.priceBought}</td>
-                                <td className="coin-col">{coin.change}</td>
                             </tr>
                         ))}
                     </tbody>

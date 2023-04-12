@@ -3,7 +3,7 @@ import PriceChart from 'components/PriceChart';
 import { useLocation } from 'react-router-dom';
 import './style.css';
 
-const TickerSearch = () => {
+const TickerSearch = ({balance, userId}) => {
   const [ticker, setTicker] = useState('bitcoin');
   const [days, setDays] = useState(5);
   
@@ -37,13 +37,58 @@ const TickerSearch = () => {
     return 0;
   };
 
-  const handleBuySubmit = (e) => {
-    // e.preventDefault();
+  const buyCrypto = async (userId, symbol, amount, price) => {
+    const response = await fetch(`http://127.0.0.1:8000/user/${userId}/buy`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ symbol, amount, price }),
+    });
+  
+    return await response.json();
+  };
+  
+  const sellCrypto = async (userId, symbol, amount, price) => {
+    const response = await fetch(`http://127.0.0.1:8000/user/${userId}/sell`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ symbol, amount, price }),
+    });
+  
+    return await response.json();
+  };
+  
+
+
+  const handleBuySubmit = async (e) => {
+    e.preventDefault();
     // TODO: Handle buy form submission
+    try {
+      const response = await buyCrypto(userId, ticker, amount, tokenData.market_data.current_price.gbp);
+      console.log(response);
+      // Update user balance and crypto holdings in the state if necessary
+      setShowBuyPopup(false);
+    } catch (error) {
+      console.error(error);
+      // Show an error message to the user if necessary
+    }
   };
 
-  const handleSellSubmit = (e) => {
-    // e.preventDefault();
+  const handleSellSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await sellCrypto(userId, ticker, amount, tokenData.market_data.current_price.gbp);
+      console.log(response);
+      // Update user balance and crypto holdings in the state if necessary
+      setShowSellPopup(false);
+    } catch (error) {
+      console.error(error);
+      // Show an error message to the user if necessary
+    }
+    
     // TODO: Handle sell form submission
   };
 
@@ -144,7 +189,7 @@ const TickerSearch = () => {
                 <p>Current Price (GBP): {tokenData.market_data.current_price.gbp}</p>
               </>
             )}
-            <p>Account Balance (GBP): $0</p>
+            <p>Account Balance (GBP): ${balance}</p>
             <label>
               Amount:
               <input type='number' name='amount' placeholder='Enter Amount'  onChange={handleAmountChange} />
@@ -164,7 +209,7 @@ const TickerSearch = () => {
               <p>Current Price (GBP): {tokenData.market_data.current_price.gbp}</p>
             </>
           )}
-          <p>Account Balance (GBP): Insert Account Balance</p>
+          <p>Account Balance (GBP): ${balance}</p>
           <label>
             Amount:
             <input type='number' name='amount' placeholder='Enter Amount' onChange={handleAmountChange} />

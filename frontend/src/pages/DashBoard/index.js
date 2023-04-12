@@ -28,37 +28,18 @@ const Dashboard = () => {
     fetchUserData();
   }, [userId]);
 
+  const coins = user ? user.account.cryptoWallets.coins : [];
+  const balance = user ? user.account.cashWallet.balance : 0;
 
-  const coins = [
-    {
-      id: "1",
-      name: "Bitcoin",
-      amount: "123",
-      priceBought: "123",
-      symbol: "BTC",
-      change: "%",
-    },
-    {
-      id: "2",
-      name: "Litecoin",
-      amount: "123",
-      priceBought: "123",
-      symbol: "LTC",  
-      change: "%",
-    },
-
-  ];
-
-  const balance = 42412;
 
   const renderComponent = () => {
     switch (selectedItem) {
       case 'home':
-        return <div><TickerSearch/></div>;
+        return <div><TickerSearch balance={balance} userId={userId}/></div>;
       case 'setting':
         return <div>Setting</div>;
       case 'portfolio':
-        return <div><Portfolio balance={user ? user.account.cashWallet.balance : 0} coins={coins} /></div>;
+        return <div><Portfolio balance={balance} coins={coins} /></div>;
       case 'support':
         return <div><Contact/></div>;
       default:
