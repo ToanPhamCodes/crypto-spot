@@ -45,6 +45,7 @@ const Portfolio = ({ balance, coins, userId }) => {
           console.log(response);
           // Update user balance 
           setDepositPopup(false);
+          
         } catch (error) {
           console.error(error);
           // Show an error message to the user if necessary
