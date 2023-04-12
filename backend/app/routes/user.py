@@ -62,8 +62,6 @@ async def update_user(
     update_fields["firstName"] = first_name
   if last_name:
     update_fields["lastName"] = last_name
-  if phone_number:
-    update_fields["phoneNumber"] = phone_number
   if email:
     # Check if the new email already exists in the database
     if db.users.find_one({"email": email}):

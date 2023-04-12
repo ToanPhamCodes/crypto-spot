@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './style.css';
 
-const SignIn = ({setIsLoggedIn}) => {
+const SignIn = ({ setIsLoggedIn }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [firstName, setFirstName] = useState('');
@@ -10,8 +10,19 @@ const SignIn = ({setIsLoggedIn}) => {
   const [isSignUp, setIsSignUp] = useState(false);
   const navigate = useNavigate();
 
+  // const signUp = async (email, password, firstName, lastName) => {
+  //   const response = await fetch("http://127.0.0.1:8000/signup", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({ email, password, first_name: firstName, last_name: lastName }),
+  //   });
+  //   return await response.json();
+  // };
+
   const signUp = async (email, password, firstName, lastName) => {
-    const response = await fetch("http://127.0.0.1:8000/signup", {
+    const response = await fetch("http://127.0.0.1:8000/auth/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -20,7 +31,7 @@ const SignIn = ({setIsLoggedIn}) => {
     });
     return await response.json();
   };
-  
+
   // const signIn = async (email, password) => {
   //   const response = await fetch("http://127.0.0.1:8000/signin", {
   //     method: "POST",
@@ -51,7 +62,7 @@ const SignIn = ({setIsLoggedIn}) => {
       if (response.user_id) {
         // Navigate to the dashboard
         setIsLoggedIn(true);
-        navigate('/dashboard');
+        navigate('/dashboard', { state: { userId: response.user_id } });
       } else {
         // Handle sign up error
         window.alert("Failed to sign up. Please try again.");

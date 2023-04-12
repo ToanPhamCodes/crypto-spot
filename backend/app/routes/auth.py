@@ -19,6 +19,12 @@ class SignInInput(BaseModel):
     email: str
     password: str
 
+class SignUpInput(BaseModel):
+    email: str
+    password: str
+    first_name: str
+    last_name: str
+
 
 def get_password_hash(password):
     return password
@@ -37,6 +43,23 @@ def sign_in(email: str, password: str):
 
     return {"user_id": str(user["_id"]), "email": user["email"]}
 
+def sign_up(email: str, password: str, first_name: str, last_name: str):
+    email = email.lower()
+
+    user = users_collection.find_one({"email": email})
+    if user:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Email already in use")
+
+    new_user = {
+        "email": email,
+        "password": get_password_hash(password),
+        "firstName": first_name,
+        "lastName": last_name
+    }
+
+    result = users_collection.insert_one(new_user)
+    return {"user_id": str(result.inserted_id), "email": email}
+
 def sign_out(request):
     request.session.pop("user_id", None)
 
@@ -44,6 +67,10 @@ def sign_out(request):
 @app.post("/auth/signin", response_model=Dict[str, str])
 async def authenticate_user(data: SignInInput):
     return sign_in(data.email, data.password)
+
+@app.post("/auth/signup", response_model=Dict[str, str])
+async def register_user(data: SignUpInput):
+    return sign_up(data.email, data.password, data.first_name, data.last_name)
 
 # def sign_up(user: UserAccount):
 #     email = user.email.lower()

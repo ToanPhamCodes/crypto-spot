@@ -2,13 +2,13 @@ from db import db
 from models.cards import Card
 from models.user import User
 
-def populateUser(firstName: str, lastName: str, email: str, phoneNumber: str, password: str):
+def populateUser(firstName: str, lastName: str, email: str, password: str):
     # Create a user
-    user = User(firstName=firstName, lastName=lastName, email=email, phoneNumber=phoneNumber, password=password)
+    user = User(firstName=firstName, lastName=lastName, email=email, password=password)
 
     # Create two credit cards
-    card1 = Card(name="Card 1", cardNumber="1111111111111111", expiryDate="12/2025", cvv=123, firstName=firstName, lastName=lastName)
-    card2 = Card(name="Card 2", cardNumber="2222222222222222", expiryDate="05/2024", cvv=123, firstName=firstName, lastName=lastName)
+    card1 = Card(cardNumber="1111111111111111", expiryDate="12/2025", cvv=123, firstName=firstName, lastName=lastName)
+    card2 = Card(cardNumber="2222222222222222", expiryDate="05/2024", cvv=123, firstName=firstName, lastName=lastName)
 
     # Add the cards to the user's account
     user.addCard(card1)
@@ -28,8 +28,8 @@ def populateUser(firstName: str, lastName: str, email: str, phoneNumber: str, pa
     print(f"Inserted {firstName} {lastName}")
 
 def populateJohn():
-  populateUser("John", "Doe", "johndoe@example.com", "1234567890", "password")
+  populateUser("John", "Doe", "johndoe@example.com", "password")
 
 # Populate Jane
 def populateJane():
-  populateUser("Jane", "Doe", "janedoe@example.com", "1234567890", "password")
+  populateUser("Jane", "Doe", "janedoe@example.com", "password")

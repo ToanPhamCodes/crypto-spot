@@ -8,7 +8,6 @@ class User(BaseModel):
   firstName: str
   lastName: str
   email: str
-  phoneNumber: str
   password: str
   account: Account = Account(userId=_id)
 
