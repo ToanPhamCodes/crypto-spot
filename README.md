@@ -15,7 +15,8 @@ Go to backend and run these commands
 cd backend
 python3 -m venv env
 source . env/bin/activate
-pip install -r requirement.txt
+pip3 install -r requirement.txt
+cd app
 uvicorn main:app --reload
 ```
 

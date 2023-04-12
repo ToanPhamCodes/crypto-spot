@@ -1,7 +1,16 @@
-import React from "react";
+import React, {useState}from "react";
 import "./style.css";
 
 const Portfolio = ({ balance, coins }) => {
+    const [showWithdrawPopup, setWithdrawPopup] = useState(false);
+    const [showDepositPopup, setDepositPopup] = useState(false);
+
+    const handleDeposit = (event) => {
+        //handle the user deposit here
+    }
+    const handleWithdraw = (event) => {
+        //handle the user withdrawal here
+    }
     return (
         <div className="portfolio-container">
             <div className="balances-container">
@@ -18,8 +27,8 @@ const Portfolio = ({ balance, coins }) => {
                 </div>
 
                 <div className="button-container">
-                    <button className="deposit-button">Deposit</button>
-                    <button className="withdraw-button">Withdraw</button>
+                    <button className="deposit-button" onClick={() => setDepositPopup(true)}>Deposit</button>
+                    <button className="withdraw-button" onClick={() => setWithdrawPopup(true)}>Withdraw</button>
                     <button className="export-button">export</button>
                 </div>
             </div>
@@ -43,6 +52,31 @@ const Portfolio = ({ balance, coins }) => {
                     </tbody>
                 </table>
             </div>
+            {showDepositPopup && (
+            <div className="popUpScreen">
+                <div className="popUpScreenDiv">
+                    <form onSubmit={handleDeposit}>
+                    <label htmlFor="amount">Amount (GBP):</label>
+                    <input type="number" id="amount" name="amount" />
+                    <button type="submit">Deposit</button>
+                    <button type="button" onClick={() => setDepositPopup(false)}>Cancel</button>
+                    </form>
+                </div>
+            </div>
+            )}
+            {showWithdrawPopup && (
+            <div className="popUpScreen">
+                <div className="popUpScreenDiv">
+                    <form onSubmit={handleWithdraw}>
+                        <p>Cash Available: {balance} (GBP)</p>
+                    <label htmlFor="amount">Amount (GBP):</label>
+                    <input type="number" id="amount" name="amount" />
+                    <button type="submit">Withdraw</button>
+                    <button type="button" onClick={() => setDepositPopup(false)}>Cancel</button>
+                    </form>
+                </div>
+            </div>
+            )}
         </div>
     );
 };
