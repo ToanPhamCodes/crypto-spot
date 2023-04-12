@@ -42,7 +42,7 @@ const Dashboard = () => {
       case 'home':
         return <div><TickerSearch balance={balance} userId={userId}/></div>;
       case 'setting':
-        return <div><Settings userName={userName} userLastName={userLastName} userEmail={userEmail} userPassword={userPassword}/></div>;
+        return <div><Settings userId={userId} userName={userName} userLastName={userLastName} userEmail={userEmail} userPassword={userPassword}/></div>;
       case 'portfolio':
         return <div><Portfolio balance={balance} coins={coins} userId={userId}/></div>;
       case 'support':

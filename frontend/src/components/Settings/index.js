@@ -1,7 +1,72 @@
 import React, { useState } from 'react';
 import './style.css';
-const Settings = ({userName, userLastName, userEmail, userPassword}) => {
+const Settings = ({userId, userName, userLastName, userEmail, userPassword}) => {
   const [showPassword, setShowPassword] = useState(false);
+
+  const [firstName, setFirstName] = useState(''); 
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState(''); 
+  const [user_Password, setPassword] = useState('');
+
+  const handleFirstNameChange = (e) => {
+    setFirstName(e.target.value);
+  }
+  const handleLastNameChange = (e) => {
+    setLastName(e.target.value);
+  }
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  }
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  }
+  const editUser = async (userId, firstName, lastName, email, password) => {
+    const response = await fetch(`http://127.0.0.1:8000/user/${userId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({firstName, lastName, email, password}),
+    });  
+    return await response.json();
+};
+const handleEditUser = async (e) => {
+  e.preventDefault();
+  // TODO: Handle deposit form submissiona
+  try {
+    const response = await editUser(userId, firstName, lastName, email, user_Password);
+    console.log(response);
+    setEditPopup(false);
+  } catch (error) {
+    console.error(error);
+    // Show an error message to the user if necessary
+  }
+};
+
+  const deleteUser = async (userId) => {
+    const response = await fetch(`http://127.0.0.1:8000/user/${userId}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({}),
+    });  
+    return await response.json();
+};
+
+const handleDeleteUser = async (e) => {
+  e.preventDefault();
+  // TODO: Handle deposit form submissiona
+  try {
+    const response = await deleteUser(userId);
+    console.log(response);
+    setDeleteUserPopup(false);
+    window.location.reload(false);
+  } catch (error) {
+    console.error(error);
+    // Show an error message to the user if necessary
+  }
+};
 
   const toggleShowPassword = () => {
     setShowPassword(!showPassword);
@@ -13,20 +78,13 @@ const Settings = ({userName, userLastName, userEmail, userPassword}) => {
   const [showEditPopup, setEditPopup] = useState(false);
   const [showDeleteUserPopup, setDeleteUserPopup] = useState(false);
 
-  const handleEditSubmit = (event) => {
-    event.preventDefault();
-    // handle form submit logic here
-    setEditPopup(false);
-  }
 
-  const handleDeleteUser = (event) => {
-    //delete user from the database
-  }
+
+
 
   return (
     <section>
       <div>
-        <p>This is where the settings will go</p>
         <p>First Name: {userName}</p>
         <p>Last Name: {userLastName}</p>
         <p>Email: {userEmail}</p>
@@ -45,16 +103,16 @@ const Settings = ({userName, userLastName, userEmail, userPassword}) => {
       {showEditPopup && (
         <div className="editScreen">
           <div className="test">
-            <form onSubmit={handleEditSubmit}>
+            <form onSubmit={handleEditUser}>
               <p>Edit Details Pop Up</p>
               <label htmlFor="firstName">First Name:</label>
-              <input type="text" id="firstName" name="firstName" defaultValue={userName} />
+              <input type="text" id="firstName" name="firstName" onChange={handleFirstNameChange}/>
               <label htmlFor="lastName">Last Name:</label>
-              <input type="text" id="lastName" name="lastName" defaultValue={userLastName} />
+              <input type="text" id="lastName" name="lastName" onChange={handleLastNameChange}/>
               <label htmlFor="email">Email:</label>
-              <input type="email" id="email" name="email" defaultValue={userEmail} />
+              <input type="email" id="email" name="email" onChange={handleEmailChange}/>
               <label htmlFor="password">Password:</label>
-              <input type="text" id="password" name="password" defaultValue={userPassword} />
+              <input type="text" id="password" name="password" onChange={handlePasswordChange}/>
               <button type="submit">Confirm Edit</button>
               <button type="button" onClick={() => setEditPopup(false)}>Cancel</button>
             </form>

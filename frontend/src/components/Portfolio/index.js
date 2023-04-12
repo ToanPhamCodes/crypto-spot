@@ -5,6 +5,7 @@ const Portfolio = ({ balance, coins, userId }) => {
     const [showWithdrawPopup, setWithdrawPopup] = useState(false);
     const [showDepositPopup, setDepositPopup] = useState(false);
 
+
     const deposit = async (userId, cardNumber, amount) => {
         const response = await fetch(`http://127.0.0.1:8000/user/${userId}/deposit`, {
           method: 'POST',
