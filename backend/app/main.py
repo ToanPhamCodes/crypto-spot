@@ -14,23 +14,21 @@ from routes.auth import app as authRouter
 
 app = FastAPI()
 
-  # populateJohn()
-  # populateJane()
 # populateJohn()
 # populateJane()
 
 app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["http://localhost:3000"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+  CORSMiddleware,
+  allow_origins=["http://localhost:3000"],
+  allow_credentials=True,
+  allow_methods=["*"],
+  allow_headers=["*"],
 )
 # app.add_middleware(SessionMiddleware, secret_key="your_secret_key")
 
 @app.get("/")
 async def root():
-    return {"message": "Server is online"}
+  return {"message": "Server is online"}
 
 
 # User routes

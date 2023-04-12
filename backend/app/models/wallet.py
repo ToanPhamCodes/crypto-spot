@@ -38,15 +38,12 @@ class CryptoWallet(BaseModel):
     raise ValueError("Coin not found")
   
   def getCoins(self) -> dict:
-    """Returns a dictionary containing the name and amount of each coin"""
-    coinInfo = []
-    for coin in self.coins:
-      coinInfo.append({
-        "coin": coin.name,
-        "balance": coin.amount
-      })
-    return coinInfo # type: ignore
-  
+      """Returns a dictionary containing the name and amount of each coin"""
+      coinInfo = {}
+      for coin in self.coins:
+          coinInfo[coin.name] = coin.amount
+      return coinInfo
+
 
 class CashWallet(BaseModel):
   _id: ObjectId = ObjectId()

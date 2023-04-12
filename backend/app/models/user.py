@@ -17,15 +17,15 @@ class User(BaseModel):
 
   @property
   def totalBalance(self):
-    return self.account.balance()
+    return self.account.balance
   
   @property
   def cashBalance(self):
-    return self.account.cashBalance()
+    return self.account.cashBalance
   
   @property
   def cryptoBalance(self):
-    return self.account.cryptoBalance()
+    return self.account.cryptoBalance
   
   def getCards(self):
     return self.account.getCards()

@@ -96,7 +96,6 @@ async def deposit(user_id: str, deposit_data: Dict[str, Union[str, float]]):
   if not user_doc:
     raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
 
-  # Create an instance of the User model from the document
   user = User.parse_obj(user_doc)
 
   try:
@@ -104,7 +103,6 @@ async def deposit(user_id: str, deposit_data: Dict[str, Union[str, float]]):
   except ValueError as e:
     raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))
 
-  # Update the user document in the database
   db.users.replace_one({"_id": ObjectId(user_id)}, user.dict())
 
   return "Deposit successful"
@@ -116,8 +114,7 @@ async def withdraw(user_id: str, withdraw_data: Dict[str, Union[str, float]]):
   user_doc = db.users.find_one({"_id": ObjectId(user_id)})
   if not user_doc:
     raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
-
-  # Create an instance of the User model from the document
+  
   user = User.parse_obj(user_doc)
 
   try:
@@ -125,7 +122,6 @@ async def withdraw(user_id: str, withdraw_data: Dict[str, Union[str, float]]):
   except ValueError as e:
     raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))
 
-  # Update the user document in the database
   db.users.replace_one({"_id": ObjectId(user_id)}, user.dict())
 
   return "Withdrawal successful"
@@ -138,7 +134,6 @@ async def buy_crypto(user_id: str, request_body: dict):
     if not user_doc:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
 
-    # Create an instance of the User model from the document
     user = User.parse_obj(user_doc)
 
     try:
@@ -146,7 +141,6 @@ async def buy_crypto(user_id: str, request_body: dict):
     except ValueError as e:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))
 
-    # Update the user document in the database
     db.users.replace_one({"_id": ObjectId(user_id)}, user.dict())
 
     return "Transaction successful"
@@ -158,7 +152,6 @@ async def sell_crypto(user_id: str, request_body: dict):
     if not user_doc:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
 
-    # Create an instance of the User model from the document
     user = User.parse_obj(user_doc)
 
     try:
@@ -166,7 +159,30 @@ async def sell_crypto(user_id: str, request_body: dict):
     except ValueError as e:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(e))
 
-    # Update the user document in the database
     db.users.replace_one({"_id": ObjectId(user_id)}, user.dict())
 
     return "Transaction successful"
+
+#Get a user's portfolio
+@app.get("/user/{user_id}/portfolio")
+async def get_portfolio(user_id: str):
+    user_doc = db.users.find_one({"_id": ObjectId(user_id)})
+    if not user_doc:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
+
+    user = User.parse_obj(user_doc)
+
+    cryptoPortfolio =  user.getCrypto()
+    return cryptoPortfolio
+
+#Get a user's cash balance
+@app.get("/user/{user_id}/balance")
+async def get_balance(user_id: str):
+    user_doc = db.users.find_one({"_id": ObjectId(user_id)})
+    if not user_doc:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
+
+    user = User.parse_obj(user_doc)
+
+    balance =  user.cashBalance
+    return balance
