@@ -192,7 +192,7 @@ const TickerSearch = ({balance, userId}) => {
             <p>Account Balance (GBP): ${balance}</p>
             <label>
               Amount:
-              <input type='number' name='amount' placeholder='Enter Amount'  onChange={handleAmountChange} />
+              <input type='number' step = "0.000001" name='amount' placeholder='Enter Amount'  onChange={handleAmountChange} />
             </label>
             <p>Total Value (GBP): {calculateTotalValue(amount, tokenData)}</p>
             <button type='submit'>Buy</button>

@@ -141,7 +141,7 @@ const Portfolio = ({ balance, coins, userId }) => {
                     <label htmlFor="cardNumber">Card Number:</label>
                     <input type="text" id="cardNumber" name="cardNumber" onChange={handleCardNumberChange}/>
                     <label htmlFor="amount">Amount (GBP):</label>
-                    <input type="number" id="amount" name="amount" onChange={handleAmountChange}/>
+                    <input type="number" step = "0.01" id="amount" name="amount" onChange={handleAmountChange}/>
                     <button type="submit">Deposit</button>
                     <button type="button" onClick={() => setDepositPopup(false)}>Cancel</button>
                     </form>
@@ -156,7 +156,7 @@ const Portfolio = ({ balance, coins, userId }) => {
                     <label htmlFor="cardNumber">Card Number:</label>
                     <input type="text" id="cardNumber" name="cardNumber" onChange={handleCardNumberChange}/>
                     <label htmlFor="amount">Amount (GBP):</label>
-                    <input type="number" id="amount" name="amount" onChange={handleAmountChange} />
+                    <input type="number" step = "0.01" id="amount" name="amount" onChange={handleAmountChange} />
                     <button type="submit">Withdraw</button>
                     <button type="button" onClick={() => setWithdrawPopup(false)}>Cancel</button>
                     </form>
