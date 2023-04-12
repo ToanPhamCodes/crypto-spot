@@ -38,32 +38,26 @@ async def create_user(user: User = Body(...)):
 
 #Update a user - NOT WORKING
 @app.put("/user/{user_id}", response_model=User)
-async def update_user(
-  user_id: str,
-  first_name: Optional[str] = None,
-  last_name: Optional[str] = None,
-  phone_number: Optional[str] = None,
-  email: Optional[str] = None,
-  password: Optional[str] = None
-  ):
+async def update_user(user_id: str, request_body: dict):
+  first_name = request_body.get("first_name")
+  last_name = request_body.get("last_name")
+  # phone_number = request_body.get("phone_number")
+  email = request_body.get("email")
+  password = request_body.get("password")
+  
   user = db.users.find_one({"_id": ObjectId(user_id)})
   if not user:
     raise HTTPException(status_code=404, detail="User not found")
 
   # Update the user fields that are specified in the request body
   update_fields = {}
-  print(f"first_name: {first_name}")
-  print(f"last_name: {last_name}")
-  print(f"phone_number: {phone_number}")
-  print(f"email: {email}")
-  print(f"password: {password}")
 
   if first_name:
     update_fields["firstName"] = first_name
   if last_name:
     update_fields["lastName"] = last_name
-  if phone_number:
-    update_fields["phoneNumber"] = phone_number
+  # if phone_number:
+  #   update_fields["phoneNumber"] = phone_number
   if email:
     # Check if the new email already exists in the database
     if db.users.find_one({"email": email}):
@@ -72,7 +66,6 @@ async def update_user(
   if password is not None:
     update_fields["password"] = password
 
-  print(f"Fields: {update_fields}")
   # Update the user in the database
   db.users.update_one({"_id": ObjectId(user_id)}, {"$set": update_fields})
   # Return the updated user
