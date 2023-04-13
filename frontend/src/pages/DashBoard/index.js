@@ -51,7 +51,7 @@ const Dashboard = ({setIsLoggedIn}) => {
       case 'setting':
         return <div><Settings userId={userId} userName={userName} userLastName={userLastName} userEmail={userEmail} userPassword={userPassword}/></div>;
       case 'portfolio':
-        return <div><Portfolio balance={balance} coins={coins} userId={userId}/></div>;
+        return <div><Portfolio balance={balance} coins={coins} userId={userId} user = {user}/></div>;
       case 'support':
         return <div><Contact/></div>;
       default:
